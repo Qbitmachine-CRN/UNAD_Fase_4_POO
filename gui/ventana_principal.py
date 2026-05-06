@@ -13,6 +13,9 @@ CARD = "#1e1e1e"
 FG = "#ffffff"
 ACCENT = "#4CAF50"
 
+reservas_guardadas = []
+clientes_guardados = []
+
 #IMPORTS FALTANTES
 try:
     from core.cliente import Cliente
@@ -66,92 +69,154 @@ def iniciar_app():
 def vista_clientes(frame):
     limpiar_frame(frame)
 
-    tk.Label(
-        frame,
-        text="Gestión de Clientes",
-        bg=BG,
-        fg=FG,
-        font=("Arial", 16, "bold")
-    ).pack(pady=20)
+    tk.Label(frame, text="Gestión de Clientes", bg=BG, fg=FG,
+             font=("Arial", 16, "bold")).pack(pady=20)
 
     card = tk.Frame(frame, bg=CARD, padx=20, pady=20)
     card.pack(pady=10)
 
-    tk.Label(card, text="Nombre", bg=CARD, fg=FG).grid(row=0, column=0, pady=5)
-    entrada = tk.Entry(card)
-    entrada.grid(row=0, column=1, pady=5)
+    # CAMPOS
+    tk.Label(card, text="Nombre", bg=CARD, fg=FG).grid(row=0, column=0)
+    entrada_nombre = tk.Entry(card)
+    entrada_nombre.grid(row=0, column=1)
+
+    tk.Label(card, text="Correo", bg=CARD, fg=FG).grid(row=1, column=0)
+    entrada_correo = tk.Entry(card)
+    entrada_correo.grid(row=1, column=1)
+
+    tk.Label(card, text="Teléfono", bg=CARD, fg=FG).grid(row=2, column=0)
+    entrada_telefono = tk.Entry(card)
+    entrada_telefono.grid(row=2, column=1)
+
+    lista = tk.Listbox(frame, width=50)
+    lista.pack(pady=10)
+
+    def actualizar_lista():
+        lista.delete(0, tk.END)
+        for c in clientes_guardados:
+            lista.insert(tk.END, f"{c['nombre']} | {c['correo']} | {c['telefono']}")
 
     def guardar():
         try:
-            cliente = Cliente(entrada.get())
+            cliente = {
+                "nombre": entrada_nombre.get(),
+                "correo": entrada_correo.get(),
+                "telefono": entrada_telefono.get()
+            }
 
-            registrar_evento(f"Cliente creado: {cliente.nombre}")
-            messagebox.showinfo("Éxito", f"{cliente.nombre} guardado")
+            if not cliente["nombre"]:
+                raise Exception("Nombre obligatorio")
+
+            clientes_guardados.append(cliente)
+
+            registrar_evento(f"Cliente creado: {cliente}")
+            messagebox.showinfo("Éxito", "Cliente guardado")
+
+            actualizar_lista()
 
         except Exception as e:
-            registrar_excepcion("Error al crear cliente", e)
+            registrar_excepcion("Error cliente", e)
             messagebox.showerror("Error", str(e))
 
-    tk.Button(
-        frame,
-        text="Guardar Cliente",
-        bg=ACCENT,
-        fg="white",
-        relief="flat",
-        padx=10,
-        pady=5,
-        command=guardar
-    ).pack(pady=15)
+    tk.Button(frame, text="Guardar Cliente",
+              bg=ACCENT, fg="white", command=guardar).pack(pady=10)
 
+    actualizar_lista()
 
 #VISTA DE RESERVAS
 def vista_reservas(frame):
     limpiar_frame(frame)
 
-    tk.Label(
-        frame,
-        text="Gestión de Reservas",
-        bg=BG,
-        fg=FG,
-        font=("Arial", 16, "bold")
-    ).pack(pady=20)
+    tk.Label(frame, text="Gestión de Reservas", bg=BG, fg=FG,
+             font=("Arial", 16, "bold")).pack(pady=20)
 
     card = tk.Frame(frame, bg=CARD, padx=20, pady=20)
     card.pack(pady=10)
 
-    tk.Label(card, text="Cliente", bg=CARD, fg=FG).grid(row=0, column=0, pady=5)
-    entrada_cliente = tk.Entry(card)
-    entrada_cliente.grid(row=0, column=1, pady=5)
+    # ---------------- CLIENTES ----------------
+    tk.Label(card, text="Cliente", bg=CARD, fg=FG).grid(row=0, column=0)
 
-    tk.Label(card, text="Fecha", bg=CARD, fg=FG).grid(row=1, column=0, pady=5)
+    nombres = [c["nombre"] for c in clientes_guardados]
+    cliente_var = tk.StringVar()
+
+    if nombres:
+        cliente_var.set(nombres[0])
+
+    tk.OptionMenu(card, cliente_var, *nombres).grid(row=0, column=1)
+
+    # ---------------- FECHA ----------------
+    tk.Label(card, text="Fecha", bg=CARD, fg=FG).grid(row=1, column=0)
     entrada_fecha = tk.Entry(card)
-    entrada_fecha.grid(row=1, column=1, pady=5)
+    entrada_fecha.grid(row=1, column=1)
 
+    # ---------------- SERVICIO ----------------
+    tk.Label(card, text="Servicio", bg=CARD, fg=FG).grid(row=2, column=0)
+    servicio_var = tk.StringVar(value="asesoria")
+
+    tk.OptionMenu(card, servicio_var, "asesoria", "equipo", "sala").grid(row=2, column=1)
+
+    # ---------------- LISTA ----------------
+    lista_reservas = tk.Listbox(frame, width=60)
+    lista_reservas.pack(pady=10)
+
+    def actualizar_lista():
+        lista_reservas.delete(0, tk.END)
+        for r in reservas_guardadas:
+            texto = f"{r['cliente']} | {r['fecha']} | {r['servicio']}"
+            lista_reservas.insert(tk.END, texto)
+
+    # ---------------- GUARDAR ----------------
     def guardar():
         try:
-            reserva = Reserva(
-                entrada_cliente.get(),
-                entrada_fecha.get()
-            )
+            if not clientes_guardados:
+                raise Exception("No hay clientes")
 
-            registrar_evento("Reserva creada correctamente")
+            reserva = {
+                "cliente": cliente_var.get(),
+                "fecha": entrada_fecha.get(),
+                "servicio": servicio_var.get()
+            }
+
+            reservas_guardadas.append(reserva)
+
+            registrar_evento(f"Reserva creada: {reserva}")
             messagebox.showinfo("Éxito", "Reserva creada")
 
+            actualizar_lista()
+
         except Exception as e:
-            registrar_excepcion("Error al crear reserva", e)
+            registrar_excepcion("Error reserva", e)
             messagebox.showerror("Error", str(e))
 
-    tk.Button(
-        frame,
-        text="Guardar Reserva",
-        bg=ACCENT,
-        fg="white",
-        relief="flat",
-        padx=10,
-        pady=5,
-        command=guardar
-    ).pack(pady=15)
+    # ---------------- CANCELAR SELECCIONADA ----------------
+    def cancelar():
+        try:
+            seleccion = lista_reservas.curselection()
 
+            if not seleccion:
+                raise Exception("Selecciona una reserva")
+
+            index = seleccion[0]
+            reserva = reservas_guardadas.pop(index)
+
+            registrar_evento(f"Reserva cancelada: {reserva}")
+            messagebox.showinfo("Cancelado", f"{reserva['cliente']} eliminado")
+
+            actualizar_lista()
+
+        except Exception as e:
+            registrar_excepcion("Error cancelar", e)
+            messagebox.showerror("Error", str(e))
+
+    # ---------------- BOTONES ----------------
+    tk.Button(frame, text="Guardar Reserva",
+              bg=ACCENT, fg="white", command=guardar).pack(pady=10)
+
+    tk.Button(frame, text="Cancelar seleccionada",
+              bg="red", fg="white", command=cancelar).pack()
+
+    actualizar_lista()
+              
 #VISTA DE SERVICIOS
 def vista_servicios(frame):
     limpiar_frame(frame)
