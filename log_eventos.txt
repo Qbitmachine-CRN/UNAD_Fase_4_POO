@@ -1,0 +1,105 @@
+[2026-04-29 21:21:30] [INFO] === INICIO SIMULACIÓN ACADÉMICA SOFTWARE FJ ===
+[2026-04-29 21:21:30] [INFO] Op1: Cliente válido registrado en memoria.
+[2026-04-29 21:21:30] [ERROR] Op2: email inválido controlado | ValidacionError: El formato del email no es válido.
+[2026-04-29 21:21:30] [INFO] Op2: bloque finally ejecutado.
+[2026-04-29 21:21:30] [WARNING] Cliente no creado (C-0003): El teléfono debe tener entre 7 y 15 dígitos.
+[2026-04-29 21:21:30] [INFO] Finalizado intento de creación de cliente C-0003
+[2026-04-29 21:21:30] [INFO] Op3: creación segura devolvió None por teléfono corto.
+[2026-04-29 21:21:30] [ERROR] Op4: equipo con tipo vacío | ValidacionError: Debe indicarse el tipo de equipo.
+[2026-04-29 21:21:30] [ERROR] Op5: nivel de asesoría inválido | ValidacionError: Nivel debe ser uno de: ('junior', 'semi', 'senior').
+[2026-04-29 21:21:30] [INFO] Op6: costo base=46.0, con IVA y descuento=52.0
+[2026-04-29 21:21:30] [INFO] Reserva confirmada R-00001, costo=46.0
+[2026-04-29 21:21:30] [INFO] Op6: reserva confirmada, monto facturado=46.0
+[2026-04-29 21:21:30] [ERROR] Op7: reserva en sala no disponible | ReservaError: No se pudo confirmar la reserva por fallo del servicio.
+[2026-04-29 21:21:30] [INFO] Op7: sala reactivada en finally.
+[2026-04-29 21:21:30] [ERROR] Op8: duración cero | ReservaError: La duración debe ser mayor que cero.
+[2026-04-29 21:21:30] [ERROR] Op9: encadenamiento ValueError -> DatosFaltantesError | DatosFaltantesError: No se pudo interpretar un número de operación.
+[2026-04-29 21:21:30] [INFO] Reserva confirmada R-00003, costo=22.0
+[2026-04-29 21:21:30] [ERROR] Op10: segunda confirmación rechazada | OperacionNoPermitidaError: Solo se pueden confirmar reservas pendientes.
+[2026-04-29 21:21:30] [ERROR] Op11: descuento extremo rechazado | ValidacionError: Descuento debe estar entre 0 y 90%.
+[2026-04-29 21:21:30] [INFO] Op12: lectura parcial del log OK (200 chars finales).
+[2026-04-29 21:21:30] [INFO] Op12: finally tras intento de lectura del log.
+[2026-04-29 21:21:30] [ERROR] Op13: SoftwareFJError con causa RuntimeError | SoftwareFJError: Operación abortada por fallo interno.
+[2026-04-29 21:21:30] [INFO] === FIN SIMULACIÓN: el sistema sigue activo ===
+[2026-04-29 21:22:22] [INFO] Inicio aplicación con interfaz gráfica
+[2026-04-29 21:22:23] [INFO] Interfaz gráfica iniciada
+[2026-04-29 21:23:01] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:23:13] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:23:31] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:23:50] [INFO] Reserva confirmada R-00001, costo=100.0
+[2026-04-29 21:23:50] [INFO] procesar() ejecutado para reserva R-00001
+[2026-04-29 21:23:53] [INFO] GUI: flujo crear reserva finalizado
+[2026-04-29 21:24:16] [INFO] Reserva cancelada R-00001. Motivo: Motivo personal
+[2026-04-29 21:25:38] [INFO] Reserva confirmada R-00002, costo=640.0
+[2026-04-29 21:25:38] [INFO] procesar() ejecutado para reserva R-00002
+[2026-04-29 21:25:39] [INFO] GUI: flujo crear reserva finalizado
+[2026-04-29 21:25:50] [INFO] Reserva confirmada R-00003, costo=95.0
+[2026-04-29 21:25:50] [INFO] procesar() ejecutado para reserva R-00003
+[2026-04-29 21:25:51] [INFO] GUI: flujo crear reserva finalizado
+[2026-04-29 21:28:41] [INFO] Reserva confirmada R-00004, costo=495.0
+[2026-04-29 21:28:41] [INFO] procesar() ejecutado para reserva R-00004
+[2026-04-29 21:28:43] [INFO] GUI: flujo crear reserva finalizado
+[2026-04-29 21:29:04] [INFO] Reserva confirmada R-00005, costo=400.0
+[2026-04-29 21:29:04] [INFO] procesar() ejecutado para reserva R-00005
+[2026-04-29 21:29:05] [INFO] GUI: flujo crear reserva finalizado
+[2026-04-29 21:30:49] [INFO] Inicio aplicación con interfaz gráfica
+[2026-04-29 21:30:50] [INFO] Interfaz gráfica iniciada
+[2026-04-29 21:31:08] [WARNING] GUI: alta cliente fallida: El teléfono debe tener entre 7 y 15 dígitos.
+[2026-04-29 21:31:08] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:31:16] [WARNING] GUI: alta cliente fallida: El email es obligatorio.
+[2026-04-29 21:31:16] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:31:21] [INFO] GUI: intento de registro de cliente finalizado
+[2026-04-29 21:31:28] [INFO] Reserva confirmada R-00001, costo=400.0
+[2026-04-29 21:31:28] [INFO] procesar() ejecutado para reserva R-00001
+[2026-04-29 21:31:30] [INFO] GUI: flujo crear reserva finalizado
+[2026-05-04 20:08:24] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-04 20:08:26] [INFO] Interfaz gráfica iniciada
+[2026-05-04 20:08:59] [INFO] GUI: intento de registro de cliente finalizado
+[2026-05-04 20:10:06] [INFO] GUI: intento de registro de cliente finalizado
+[2026-05-04 20:10:38] [INFO] Reserva confirmada R-00001, costo=200.0
+[2026-05-04 20:10:38] [INFO] procesar() ejecutado para reserva R-00001
+[2026-05-04 20:10:39] [INFO] GUI: flujo crear reserva finalizado
+[2026-05-04 20:10:49] [INFO] Reserva cancelada R-00001. Motivo: Personales
+[2026-05-04 20:10:53] [INFO] Reserva confirmada R-00002, costo=200.0
+[2026-05-04 20:10:53] [INFO] procesar() ejecutado para reserva R-00002
+[2026-05-04 20:10:56] [INFO] GUI: flujo crear reserva finalizado
+[2026-05-04 20:11:00] [INFO] Reserva confirmada R-00003, costo=350.0
+[2026-05-04 20:11:00] [INFO] procesar() ejecutado para reserva R-00003
+[2026-05-04 20:11:02] [INFO] GUI: flujo crear reserva finalizado
+[2026-05-04 20:13:00] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-04 20:13:00] [INFO] Interfaz gráfica iniciada
+[2026-05-08 20:05:55] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-08 20:05:57] [ERROR] Fallo crítico al iniciar la GUI | ImportError: cannot import name 'VentanaPrincipal' from 'gui.ventana_principal' (C:\Users\Mabell Ortiz\Desktop\UNAD 3 Semestre\Programación\Tarea 4\UNAD_Fase_4_POO\gui\ventana_principal.py)
+[2026-05-08 20:07:46] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-08 20:08:15] [INFO] Cliente creado: {'nombre': 'jesus rodriguez', 'correo': 'jesus@gmail.com', 'telefono': '31157'}
+[2026-05-08 20:08:37] [INFO] Reserva creada: {'cliente': 'jesus rodriguez', 'fecha': '08/05/2026', 'servicio': 'equipo'}
+[2026-05-08 20:08:45] [INFO] Reserva cancelada: {'cliente': 'jesus rodriguez', 'fecha': '08/05/2026', 'servicio': 'equipo'}
+[2026-05-08 20:08:57] [INFO] Servicio calculado: asesoria - costo 800.0
+[2026-05-08 20:09:03] [INFO] Servicio calculado: equipo - costo 270.0
+[2026-05-08 20:21:33] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-08 20:25:18] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-08 20:25:48] [INFO] GUI: cotización asesoria horas=8.0 total=1071.0
+[2026-05-08 20:26:00] [INFO] GUI: cotización asesoria horas=8.0 total=952.0
+[2026-05-08 20:26:25] [INFO] GUI: cliente registrado C-GUI-0001
+[2026-05-08 20:26:45] [INFO] GUI: cliente registrado C-GUI-0002
+[2026-05-08 20:26:56] [INFO] GUI: reserva creada R-GUI-0001 (pendiente)
+[2026-05-08 20:27:02] [INFO] Reserva confirmada R-GUI-0001, costo=640.0
+[2026-05-08 20:27:02] [INFO] GUI: reserva confirmada R-GUI-0001, costo=640.0
+[2026-05-08 20:27:11] [INFO] Reserva cancelada R-GUI-0001. Motivo: Cancelación desde GUI
+[2026-05-08 20:27:11] [INFO] GUI: reserva eliminada de la sesión R-GUI-0001
+[2026-05-08 20:27:37] [INFO] GUI: cotización equipo horas=10.0 total=309.4
+[2026-05-08 20:27:47] [INFO] GUI: cotización sala horas=10.0 total=523.6
+[2026-05-08 20:30:40] [INFO] Inicio aplicación con interfaz gráfica
+[2026-05-08 20:31:05] [INFO] GUI: cliente registrado C-GUI-0001
+[2026-05-08 20:31:26] [INFO] GUI: cliente registrado C-GUI-0002
+[2026-05-08 20:31:37] [INFO] GUI: reserva creada R-GUI-0001 (pendiente)
+[2026-05-08 20:31:52] [INFO] GUI: cotización asesoria horas=10.0 total=1713.6
+[2026-05-08 20:32:03] [INFO] Reserva confirmada R-GUI-0001, costo=370.0
+[2026-05-08 20:32:03] [INFO] GUI: reserva confirmada R-GUI-0001, costo=370.0
+[2026-05-08 20:32:26] [INFO] GUI: cotización asesoria horas=1.0 total=171.36
+[2026-05-08 20:32:42] [INFO] GUI: reserva creada R-GUI-0002 (pendiente)
+[2026-05-08 20:32:46] [ERROR] GUI: no se pudo confirmar reserva | OperacionNoPermitidaError: Solo se pueden confirmar reservas pendientes.
+[2026-05-08 20:32:50] [INFO] Reserva confirmada R-GUI-0002, costo=480.0
+[2026-05-08 20:32:50] [INFO] GUI: reserva confirmada R-GUI-0002, costo=480.0
+[2026-05-08 20:33:23] [INFO] Reserva cancelada R-GUI-0002. Motivo: Cancelación desde GUI
+[2026-05-08 20:33:23] [INFO] GUI: reserva eliminada de la sesión R-GUI-0002
