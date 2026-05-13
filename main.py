@@ -146,6 +146,17 @@ def ejecutar_simulacion() -> None:
         registrar_excepcion("Op13: SoftwareFJError con causa RuntimeError", err)
 
     registrar_evento("=== FIN SIMULACIÓN: el sistema sigue activo ===", "INFO")
+    
+    # Operación 14: Aporte de Alex - Validación de seguridad en montos
+    try:
+        print("\n--- Operación 14: Validación de seguridad de Alex ---")
+        from utils.validador_alex import validar_monto_positivo
+        # Simulamos un error de usuario metiendo un valor negativo
+        validar_monto_positivo(-50000, "Depósito de Reserva")
+    except Exception as e:
+        print(f"Error capturado exitosamente por Alex: {e}")
+        registrar_evento("Op14: El sistema de Alex controló el error y mantuvo la estabilidad.", "INFO")
+
 
 
 def main() -> None:
